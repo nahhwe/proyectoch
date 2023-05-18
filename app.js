@@ -8,21 +8,6 @@ let rangos = [
 
 let topTen = {id:4 , titulo:"TOP TEN" , precio:30000}
 
-//Recorre todos los rangos y muestra su información.
-for (let rango of rangos){
-    let contenedor = document.createElement("div")
-    contenedor.innerHTML=
-    `
-    <div class="card border-dark mb-3" style="max-width: 20rem;">
-    <div class="card-header">${rango.titulo}</div>
-    <div class="card-body">
-        <p class="card-text"> $ ${rango.precio}</p>
-            <button type="button" class="btn btn-dark">Agregar al carrito</button>
-        </div>
-    </div>
-    `
-    document.body.appendChild(contenedor)
-}
 // Capturar el boton de Agregar al carrito.
 
 const agregarProductoAscendant = document.querySelector("#agregaritemascendant"); 
@@ -62,8 +47,8 @@ agregarProductoRadiant.addEventListener("click", ()=>{
      console.log(carrito);     
  })
 
-const rangosJSON = JSON.stringify(rangos); // Paso del arreglo a un JSON - Texto plano.
-console.log(rangosJSON);
+const rangosJSON = JSON.stringify(rangos); // Paso del arreglo "rangos" a un JSON - Texto plano.
+console.log(rangosJSON); // Muestro un JSON - Texto plano.
 
 localStorage.setItem("rangos", rangosJSON); // Envio key.value al localStorage.
 
@@ -77,6 +62,3 @@ const rangosActualizadosJSON = JSON.stringify(rangosActualizados); // Paso del a
 console.log(rangosActualizadosJSON); //Muestro el JSON - Texto plano.
 
 localStorage.setItem("rangos2", rangosActualizadosJSON); // Envio key.value (modificado) al localStorage.
-
-/* Deberás agregar y entregar uso de JSON y Storage, y DOM
-y eventos del usuario, correspondientes a la tercera entrega de tu proyecto final. */
