@@ -1,73 +1,18 @@
-/* let elemento
-
-elemento= document
-elemento = document.head
-elemento = document.body
-elemento = document.forms
-elemento = document.scripts
-elemento = document.images
-
-console.log(elemento) */
-
-// METODO TRADICIONAL => id, class, tags
-
-/* const navbar = document.getElementsByClassName("navbar") 
-const contenedor = document.getElementsByClassName("container")
-const inputNombre = document.getElementById("inputName")
-const formulario = document.getElementsByTagName("form")
-
-console.log(formulario) */
-
-// METODO MODERNO => id, class, tags
-
-/* const navbar = document.querySelector(".navbar")
-const contenedor = document.querySelectorAll(".container")
-const inputNombre = document.querySelector("#inputName")
-const formulario = document.querySelector("form")
-console.log(formulario) */
-
-/* const encabezado = document.querySelector("h2").textContent= "Nuevo encabezado desde Javascript"
-console.log(encabezado) */
-
-// Eliminar un elemento del DOM
-
-/* const textDelete = document.querySelector("h5")
-textDelete.remove()
-
-console.log(textDelete) */
-
-// Agregar elementos en el DOM
-
-/* const textAdded = document.createElement("h5")
-textAdded.innerHTML = "<h5>Texto agregado</h5>"
-document.body.appendChild(textAdded)
-
-console.log(textAdded) */
-
-/* const listaVacia = document.querySelector(".lista-vacia")
-
-let otrosCursos=["Desarrollo Web","Javascript","ReactJs","NodeJs"]
-
-for (let curso of otrosCursos){
-    let listado = document.createElement("li")
-    listado.innerHTML= curso
-    listaVacia.appendChild(listado)
-}
-
-console.log(listaVacia) */
+const carrito = [];
 
 let rangos = [
     {id:1 , titulo:"Ascendant 3" , precio:5000},
     {id:2 , titulo: "Inmortal 3" , precio:10000},
-    {id:3 , titulo:"Radiant 3" , precio: 15000},
+    {id:3 , titulo:"Radiant" , precio: 15000},
 ]
 
+let topTen = {id:4 , titulo:"TOP TEN" , precio:30000}
 
+//Recorre todos los rangos y muestra su información.
 for (let rango of rangos){
     let contenedor = document.createElement("div")
     contenedor.innerHTML=
     `
-
     <div class="card border-dark mb-3" style="max-width: 20rem;">
     <div class="card-header">${rango.titulo}</div>
     <div class="card-body">
@@ -75,12 +20,63 @@ for (let rango of rangos){
             <button type="button" class="btn btn-dark">Agregar al carrito</button>
         </div>
     </div>
-
-    
     `
-
     document.body.appendChild(contenedor)
 }
+// Capturar el boton de Agregar al carrito.
+
+const agregarProductoAscendant = document.querySelector("#agregaritemascendant"); 
+console.log(agregarProductoAscendant);
+
+// Agregar evento al boton para que agregue un producto al arreglo (carrito)
+
+agregarProductoAscendant.addEventListener("click", ()=>{
+     console.log("Agregaste Ascendant 3 al carrito!");
+     carrito.push(rangos[0]);
+     console.log(carrito);
+ })
+
+ // Capturar el boton de Agregar al carrito.
+
+const agregarProductoInmortal = document.querySelector("#agregariteminmortal"); 
+console.log(agregarProductoInmortal);
+
+// Agregar evento al boton para que agregue un producto al arreglo (carrito)
+
+agregarProductoInmortal.addEventListener("click", ()=>{
+     console.log("Agregaste Inmortal 3 al carrito!");
+     carrito.push(rangos[1]);
+     console.log(carrito);
+ })
+
+  // Capturar el boton de Agregar al carrito.
+
+const agregarProductoRadiant = document.querySelector("#agregaritemradiant"); 
+console.log(agregarProductoRadiant);
+
+// Agregar evento al boton para que agregue un producto al arreglo (carrito)
+
+agregarProductoRadiant.addEventListener("click", ()=>{
+     console.log("Agregaste Radiant al carrito!");
+     carrito.push(rangos[2]);
+     console.log(carrito);     
+ })
+
+const rangosJSON = JSON.stringify(rangos); // Paso del arreglo a un JSON - Texto plano.
+console.log(rangosJSON);
+
+localStorage.setItem("rangos", rangosJSON); // Envio key.value al localStorage.
+
+const rangosActualizados = JSON.parse(localStorage.getItem("rangos")); // Traigo "rangos" del localStorage en formato de arreglo.
+console.log(rangosActualizados); //Muestro el arreglo que traje del localStorage.
+
+rangosActualizados.push(topTen); //Envio un nuevo producto/servicio al arreglo.
+console.log(rangosActualizados); //Muestro el arreglo modificado.
+
+const rangosActualizadosJSON = JSON.stringify(rangosActualizados); // Paso del arreglo a un JSON - Texto plano.
+console.log(rangosActualizadosJSON); //Muestro el JSON - Texto plano.
+
+localStorage.setItem("rangos2", rangosActualizadosJSON); // Envio key.value (modificado) al localStorage.
 
 /* Deberás agregar y entregar uso de JSON y Storage, y DOM
 y eventos del usuario, correspondientes a la tercera entrega de tu proyecto final. */
