@@ -58,7 +58,7 @@ console.log(rangosActualizados); //Muestro el arreglo que traje del localStorage
 rangosActualizados.push(topTen); //Envio un nuevo producto/servicio al arreglo.
 console.log(rangosActualizados); //Muestro el arreglo modificado.
 
-const rangosActualizadosJSON = JSON.stringify(rangosActualizados); // Paso del arreglo a un JSON - Texto plano.
+const rangosActualizadosJSON = JSON.stringify(rangosActualizados); // Paso del arreglo modificado a un JSON - Texto plano.
 console.log(rangosActualizadosJSON); //Muestro el JSON - Texto plano.
 
 localStorage.setItem("rangos2", rangosActualizadosJSON); // Envio key.value (modificado) al localStorage.
