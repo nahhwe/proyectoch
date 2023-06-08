@@ -62,3 +62,40 @@ const rangosActualizadosJSON = JSON.stringify(rangosActualizados); // Paso del a
 console.log(rangosActualizadosJSON); //Muestro el JSON - Texto plano.
 
 localStorage.setItem("rangos2", rangosActualizadosJSON); // Envio key.value (modificado) al localStorage.
+
+const baseDeAgentes = [ //Base de agentes (personajes)
+    { id: "Reyna", nombre: "Reyna", ocupation: "Duelist"},
+    { id: "Jett", nombre: "Jett", ocupation: "Killer"  },
+    { id: "Killjoy", nombre: "Killjoy", ocupation: "Centinel" },
+    { id: "Phoenix", nombre: "Phoenix", ocupation: "Duelist" }
+];
+
+const pedirAgentes = () => {
+    return new Promise((resolve, reject) => { //Creo la promesa.
+        setTimeout(() => { //Seteo el timeout de 5 segundos.
+            resolve(baseDeAgentes);
+        }, 5000);
+    })
+}
+
+let agentes = []; // Creo el arreglo de agentes vacio.
+
+const listaAgentes = document.querySelector("#agents"); //Tomo el elemento donde estará el listado, de agentes a utilizar, del HTML
+
+function mostrarAgentes(arreglo) { //Creo la funcion para mostrar los agentes.
+    arreglo.forEach(item => { 
+        const li = document.createElement("li");
+        li.textContent = `${item.nombre} - ${item.ocupation}` //Tomo el nombre y ocupación del personaje.
+        listaAgentes.append(li);
+    });
+}
+
+pedirAgentes()
+    .then((res) => { //Promesa realizada.
+        agentes = res;
+        mostrarAgentes(agentes);
+        console.log("Promise resolved.")
+    })
+    .catch((rej) => { //Promesa rechazada.
+        console.log("Promise rejected.")
+    })

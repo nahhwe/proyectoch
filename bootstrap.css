@@ -78,7 +78,7 @@
   --bs-border-radius-2xl: 2rem;
   --bs-border-radius-pill: 50rem;
   --bs-link-color: #d9230f;
-  --bs-link-hover-color: #ae1c0c;
+  --bs-link-hover-color: black;
   --bs-code-color: #e83e8c;
   --bs-highlight-bg: #fff3cd;
 }
@@ -96,7 +96,7 @@
 }
 
 body {
-  margin: 0;
+  margin: 25px;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
@@ -11028,4 +11028,22 @@ textarea.form-control-lg {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+}
+
+.whatsapp {
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:#25d366;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  font-size:30px;
+  z-index:100;
+}
+
+.whatsapp-icon {
+  margin-top:13px;
 }

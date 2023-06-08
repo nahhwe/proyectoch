@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>VALORANT EloBoost</title>
 </head>
 
@@ -22,10 +23,31 @@
     <div class="lista-vacia">
                 
     </div>
+    
+    <h2>Rangos competitivos</h2>
+    <p id="rangosAPI"></p>    
+    <script>
+        let url = 'https://valorant-api.com/v1/competitivetiers'
+        fetch(url)
+            .then(response => response.json())
+            .then(data => obtenerDatos(data))
+            .catch(error => console.log(error))
 
+        const obtenerDatos = (data) =>{
+            console.log(data.data[4].tiers)
+            const { tiers } = data.data[4]
+            let body = ''
+            for(let i = 21; i < tiers.length; i++){
+                console.log(tiers[i].tierName)
+                body += `<img src= "${tiers[i].smallIcon}" witdh=50px height=50px> ${tiers[i].tierName} - `
+            }
+        document.getElementById('rangosAPI').innerHTML = body
+        }
+    </script>
+    
     <!-- Cards -->
 
-    
+        
     <div class="container">
         <h2>Servicios</h2>
     </div>
@@ -52,45 +74,18 @@
                 <img src="https://ih1.redbubble.net/image.3180601948.7123/st,small,507x507-pad,600x600,f8f8f8.jpg">
                 <div class="card-header">Radiant</div>
                 <div class="card-body">
-                    <p class="card-text">Llevamos tu cuenta al rango competitivo Inmortal 3.</p>
+                    <p class="card-text">Llevamos tu cuenta al rango competitivo Radiant.</p>
                         <button id="agregaritemradiant" type="button" class="btn btn-dark">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
             <hr>
-            
-            <!-- Cart -->
-            
-            <div class="container">
-                <h2>Tu Carrito</h2>
-                <em>Tus servicios seleccionados...</em>.
-            
-                <div class="container-cart">
-                    
-                    <h4 class="card-title">Servicio</h4>
-                    <p class="card-text">Precio:</p>
-                    <button type="button" class="btn btn-outline-primary">Eliminar</button>
-                </div>
+
+            <div>
+                <h2 id="agents">Agentes a utilizar</h2>
             </div>
-            
-            <hr>
-            
-            <!-- Form -->
-            
-            <form class="container">
-                <h3>Formulario de Contacto</h3>
-                <label>Nombre y Apellido</label>
-                <input type="text" class="form-control" id="inputName" placeholder="Ingrese su Nombre y Apellido">
-                <label>Correo Electrónico</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Ingrese su E-mail">
-                <div class="container-form">
-                    
-                    <button type="submit" class="btn btn-secondary">Comprar y Enviar Información</button>
-                </div>
-            </form>
-            
+
             <script src="app.js"></script>
-            <script src="https://sdk.mercadopago.com/js/v2"></script>
+            <a href="https://wa.me/5491158794428?text=Hola!%20Quisiera%20mas%20información%20sobre%20el%20servicio." class="whatsapp" target="_blank"> <i class="fa fa-whatsapp whatsapp-icon"></i></a>
         </body>
-        
         </html>
