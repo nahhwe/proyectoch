@@ -47,6 +47,21 @@ agregarProductoRadiant.addEventListener("click", ()=>{
      console.log(carrito);     
  })
 
+ // Capturar el boton de Compra.
+
+ const comprar = document.querySelector("#botoncomprar")
+ console.log(comprar)
+
+ // Agregar evento al boton para que guarde la información de contacto. En este caso se guarda dentro de una variable.
+
+ comprar.addEventListener("click", () =>{
+    event.preventDefault()
+   let nombrecliente = document.getElementById('inputName').value
+   let emailcliente = document.getElementById('inputEmail').value
+   console.log(nombrecliente)
+   console.log(emailcliente)
+ })
+
 const rangosJSON = JSON.stringify(rangos); // Paso del arreglo "rangos" a un JSON - Texto plano.
 console.log(rangosJSON); // Muestro un JSON - Texto plano.
 
