@@ -93,6 +93,23 @@ const pedirAgentes = () => {
     })
 }
 
+let url = 'https://valorant-api.com/v1/competitivetiers'
+fetch(url)
+    .then(response => response.json())
+    .then(data => obtenerDatos(data))
+    .catch(error => console.log(error))
+    
+const obtenerDatos = (data) =>{
+    //console.log(data.data[4].tiers)
+    const { tiers } = data.data[4]
+    let body = ''
+    for(let i = 21; i < tiers.length; i++){
+        //console.log(tiers[i].tierName)
+        body += `<img src= "${tiers[i].smallIcon}" witdh=50px height=50px> ${tiers[i].tierName} - `
+        }
+    document.getElementById('rangosAPI').innerHTML = body
+    }
+
 let agentes = []; // Creo el arreglo de agentes vacio.
 
 const listaAgentes = document.querySelector("#agents"); //Tomo el elemento donde estará el listado, de agentes a utilizar, del HTML
