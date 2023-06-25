@@ -11019,7 +11019,6 @@ textarea.form-control-lg {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items: baseline;
   margin: 1rem;
 }
 
@@ -11046,4 +11045,24 @@ textarea.form-control-lg {
 
 .whatsapp-icon {
   margin-top:13px;
+}
+
+#vaciar-carrito{
+  background: red;
+  margin-bottom: 25px;
+}
+
+#vaciar-carrito:hover {
+  background: red;
+  filter: none;
+  border: 2px solid black;
+}
+
+#subtotal{
+  display:flex;
+  justify-content: center;
+}
+
+#carrito{
+  display: block;
 }
